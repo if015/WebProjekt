@@ -1,9 +1,3 @@
-<?php
-foreach (scandir('./upload') as $file) {
-    $fileinfo = pathinfo('./files' . "/");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="de">
 
