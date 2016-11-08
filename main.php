@@ -1,3 +1,14 @@
+<?php
+session_start();
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', 'password');
+
+
+if (is_null($_SESSION['userid'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -8,10 +19,14 @@
 <body>
 <div style="text-align: right">
     <img src="#" height="64" width="64" />
-    <h2>Vorname</h2>
+    <h2>
+        <?php
+        echo $_SESSION['vorname'];
+        ?>
+    </h2>
     <ul style="list-style: none">
-        <li><a href="settings.php" >Profileinstellungen</a></li>
-        <li><a href="login.php" >Ambelden</a></li>
+        <li><a href="#" >Profileinstellungen</a></li>
+        <li><a href="logout.php" >Abmelden</a></li>
     </ul>
 </div>
 
@@ -69,23 +84,7 @@
 </div>
 
 <div style="position: fixed; bottom: 0;">
-
-    <!--
-        Links zu den einzelnen Seiten
-        Nur zur Übersicht
-    -->
-
-    Impressum<br />
-    <h3>&Uuml;bersicht</h3>
-    <ul style="list-style: none">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php">Registrieren</a></li>
-        <li><a href="main.php">&Uuml;bersicht</a></li>
-        <li><a href="settings.php">Profileinstellungen</a> </li>
-        <li><a href="upload.php">Dateien hochladen</a> </li>
-        <li><a href="share.php">Dateien teilen</a> </li>
-
-    </ul>
+&copy; 2016
 </div>
 </body>
 </html>
