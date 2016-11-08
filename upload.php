@@ -19,7 +19,8 @@ if (isset($_FILES["Datei"])) {
     $zielname = $_FILES["Datei"]["name"];
     $zielname = "upload/" . basename($zielname);
     if (@move_uploaded_file($startname, $zielname)) {
-        echo "Datei wurde &uuml;bertragen";
+        //echo "Datei wurde &uuml;bertragen";
+        header('location: main.php');
     } else {
         echo "Fehler.";
     }
@@ -30,25 +31,11 @@ if (isset($_FILES["Datei"])) {
     <input type="file" name="Datei" /><br />
     <input type="submit" value="Upload" />
 </form>
+<br />
+<a href="main.php">Zurück</a>
 
 <div style="position: fixed; bottom: 0;">
-
-    <!--
-        Links zu den einzelnen Seiten
-        Nur zur Übersicht
-    -->
-
-    Impressum<br />
-    <h3>&Uuml;bersicht</h3>
-    <ul style="list-style: none">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php">Registrieren</a></li>
-        <li><a href="main.php">&Uuml;bersicht</a></li>
-        <li><a href="settings.php">Profileinstellungen</a> </li>
-        <li><a href="upload.php">Dateien hochladen</a> </li>
-        <li><a href="share.php">Dateien teilen</a> </li>
-
-    </ul>
+&copy; 2016
 </div>
 </body>
 </html>
