@@ -1,3 +1,25 @@
+<?php
+session_start();
+$pdo = new PDO('mysql:host=localhost;dbname=web_projekt', 'root', '1234');
+
+if (isset($_GET['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $statement = $pdo->prepare("
+            SELECT * FROM users WHERE email = :email
+        ");
+    $result = $statement->execute(array('email' => $email));
+    $user = $statement->fetch();
+
+    if ($user != false && password_verify($password, $user['password'])) {
+        $_SESSION['userid'] = $user['id'];
+    } else {
+        $errorMessage = "Fehler";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -9,11 +31,18 @@
 
 <h1>Login</h1>
 
-<form>
-    E-Mail <input type="text" /><br />
-    Passwort <input type="password" /><br />
-    <input type="submit" value="Anmelden" /> (keine Funktion: <a href="main.php">weiter</a>)
+    <?php
+if (isset($errorMessage)) {
+    echo $errorMessage;
+}
+?>
+    
+<form action="?login=1" method="post">
+    E-Mail <input type="email" name="email" /><br/>
+    Passwort <input type="password" name="password" /><br/>
+    <input type="submit" value="Anmelden"/>
 </form>
+    
 oder <a href="register.php" >Registrieren</a>
 
 <div style="position: fixed; bottom: 0;">
