@@ -6,10 +6,10 @@ ToDos
 🔴 Dateien anzeigen
 ⚪️ Rekursive Anzeige der Dateien (Ordner)
 🔴 Upload
-⚪️ Upload via Drag and Drop
+⚪️ Upload via Drag and Drop Mila
 ⚪️ Annonyme Ordner
-⚪️ Daten ändern (inkl. Profilbild)
-⚪️ Dateien umbenennen
+⚪️ Daten ändern (inkl. Profilbild) Isi
+⚪️ Dateien umbenennen 
 ⚪️ Dateien löschen
 ⚪️ Dateien teilen
 ⚪️ Speicherplatz anzeigen
