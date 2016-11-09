@@ -78,7 +78,7 @@ if ($showForm) {
         Nachname <input type="text" name="nachname"/><br/>
         Passwort <input type="password" name="password"/><br/>
         Passwort wiederholen <input type="password" name="password2"/><br/>
-        <input type="submit" value="Registrieren"> (keine Funktion: <a href="login.php">zur&uuml;ck</a>)
+        <input type="submit" value="Registrieren"> 
     </form>
 
     <?php
