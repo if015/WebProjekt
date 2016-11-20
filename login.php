@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', 'passwort');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', '');
 if (isset($_GET['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -12,6 +12,7 @@ if (isset($_GET['login'])) {
     if ($user != false && password_verify($password, $user['password'])) {
         $_SESSION['userid'] = $user['id'];
         $_SESSION['vorname'] = $user['vorname'];
+        $_SESSION['dir'] = $user['directory'];
         header('Location: main.php');
     } else {
         $errorMessage = "Fehler";

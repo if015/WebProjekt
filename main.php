@@ -1,12 +1,17 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', 'password');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', '');
+
+$dirwert = $_SESSION['dir'];
+$dir ='uploads/' . $dirwert . '/';
 
 
 if (is_null($_SESSION['userid'])) {
     header("Location: login.php");
     exit;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +63,13 @@ if (is_null($_SESSION['userid'])) {
          -->
 
         <?php
-        foreach (scandir('./upload') as $file) {
-            $fileinfo = pathinfo('./upload'."/".$file);
-            $size = ceil(filesize('./upload'."/".$file)/1024) . "kb";
-            $mdate = filemtime('./upload'."/".$file);
+
+        // echo $dir; //zur Fehlersuche: Verzeichnis oder Datei nicht gefunden?! -> Fehler beseitigt.
+
+        foreach (scandir($dir) as $file) {
+            $fileinfo = pathinfo($dir."/".$file);
+            $size = ceil(filesize($dir."/".$file)/1024) . "kb";
+            $mdate = filemtime($dir."/".$file);
             if ($file != "." && $file != "..") {
                 ?>
                 <tr>

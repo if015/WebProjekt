@@ -1,3 +1,11 @@
+<?php
+session_start();
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', '');
+
+$dirwert = $_SESSION['dir'];
+$dir ='uploads/' . $dirwert . '/';
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -17,7 +25,7 @@
 if (isset($_FILES["Datei"])) {
     $startname = $_FILES["Datei"]["tmp_name"];
     $zielname = $_FILES["Datei"]["name"];
-    $zielname = "upload/" . basename($zielname);
+    $zielname = $dir . basename($zielname);
     if (@move_uploaded_file($startname, $zielname)) {
         //echo "Datei wurde &uuml;bertragen";
         header('location: main.php');

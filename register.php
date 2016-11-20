@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-db118', 'db118', 'password');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-db118', 'db118', '');
 
 ?>
 
@@ -52,10 +52,17 @@ if (isset($_GET['register'])) {
     /* keine Fehler, Nutzer kann registriert werden */
     if (!$error) {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $directory = md5($email);
         $statement = $pdo->prepare("
-            INSERT INTO users (email, vorname, nachname, password) VALUES (:email, :vorname, :nachname, :password)
+            INSERT INTO users (email, vorname, nachname, password, directory) 
+            VALUES (:email, :vorname, :nachname, :password, :directory)
         ");
-        $result = $statement->execute(array('email' => $email, 'vorname' => $vorname, 'nachname' => $nachname, 'password' => $password_hash));
+        $result = $statement->execute(array('email' => $email, 'vorname' => $vorname, 'nachname' => $nachname,
+            'password' => $password_hash, 'directory' => $directory));
+
+        //Benutzerverzeichnis wird mit dem Hash der Email-Adresse wird erstellt
+        mkdir("uploads/$directory", 0777, true);
+
         if ($result) {
             echo "Registrierung abgeschlossen";
             $showForm = false;

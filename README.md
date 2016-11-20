@@ -1,18 +1,18 @@
 ToDos
 
-🔴 Login
-🔴 Registrierung
-🔴 Sessions (Anmelden, Abmelden)
-🔴 Dateien anzeigen
-⚪️ Rekursive Anzeige der Dateien (Ordner)
-🔴 Upload
-⚪️ Upload via Drag and Drop Mila
-⚪️ Annonyme Ordner
-⚪️ Daten ändern (inkl. Profilbild) Isi
-⚪️ Dateien umbenennen 
-⚪️ Dateien löschen
-⚪️ Dateien teilen
-⚪️ Speicherplatz anzeigen
-⚪️ Schöner machen!!!
+- Login - erledigt
+- Registrierung - erledigt
+- Sessions (Anmelden, Abmelden) - erledigt
+- Dateien anzeigen - erledigt
+- Rekursive Anzeige der Dateien (Ordner)
+- Upload - erledigt
+- Upload via Drag and Drop Mila
+- Annonyme Ordner - erledigt
+- Daten ändern (inkl. Profilbild) Isi
+- Dateien umbenennen 
+- Dateien löschen
+- Dateien teilen
+- Speicherplatz anzeigen
+- Schöner machen!!!
 
 bisher: https://mars.iuk.hdm-stuttgart.de/~db118/main.php
