@@ -1,13 +1,13 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', '');
+$pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', 'iad1jai1Ai');
 
 $dirwert = $_SESSION['dir'];
 $dir ='uploads/' . $dirwert . '/';
 
 
 if (is_null($_SESSION['userid'])) {
-    header("Location: login.php");
+    header("Location: login.inc.php");
     exit;
 }
 
@@ -31,7 +31,7 @@ if (is_null($_SESSION['userid'])) {
     </h2>
     <ul style="list-style: none">
         <li><a href="#" >Profileinstellungen</a></li>
-        <li><a href="logout.php" >Abmelden</a></li>
+        <li><a href="includes/logout.inc.php" >Abmelden</a></li>
     </ul>
 </div>
 
@@ -39,7 +39,7 @@ if (is_null($_SESSION['userid'])) {
 
 <ul style="list-style: none">
     <li><a href="#">Neuer Ordner</a></li>
-    <li><a href="upload.php">Datei hochladen</a></li>
+    <li><a href="includes/upload.inc.php">Datei hochladen</a></li>
     <li><a href="#">Datei herunterladen</a></li>
     <li><a href="#">Datei umbenennen</a></li>
     <li><a href="share.php">Datei teilen</a></li>

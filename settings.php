@@ -30,11 +30,11 @@
     Impressum<br />
     <h3>&Uuml;bersicht</h3>
     <ul style="list-style: none">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php">Registrieren</a></li>
+        <li><a href="includes/login.inc.php">Login</a></li>
+        <li><a href="register_old.php">Registrieren</a></li>
         <li><a href="main.php">&Uuml;bersicht</a></li>
         <li><a href="settings.php">Profileinstellungen</a> </li>
-        <li><a href="upload.php">Dateien hochladen</a> </li>
+        <li><a href="includes/upload.inc.php">Dateien hochladen</a> </li>
         <li><a href="share.php">Dateien teilen</a> </li>
 
     </ul>
