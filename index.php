@@ -1,5 +1,7 @@
 <?php
+
 include 'header.php';
+
 
 // Überprüfung ob ein User angemeldet ist, dann wird weitergeleitet auf files.php
 

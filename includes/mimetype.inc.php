@@ -1,0 +1,134 @@
+<?php
+//if ($mime == "image/jpeg") {
+//    echo "<span class='fa fa-file-image-o'></span>";
+//}
+
+// File Type Icons für *.gz, *.z, *.gtar, *.tar, *.ustar, *.zip (Archive)
+//                     *.au, *.snd, *.es, *.tsi, *.vox, *.aif, *.aifc, *.aiff, *.dus, *.cht, *.mid, *.midi, *.mp2,
+//                     *.ram, *.ra, *.rpm, *.stream, *.wav
+
+switch($mime) {
+
+    case "application/gzip";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "application/x-compress";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "application/x-gtar";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "application/x-tar";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "application/x-ustar";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "application/zip";
+        echo "<span class='fa fa-file-archive-o'></span>";
+        break;
+    case "audio/basic";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/echospeech";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/tsplayer";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/voxware";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-aiff";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-dspeeh";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-midi";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-mpeg";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-pn-realaudio";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-pn-realaudio-plugin";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-qt-stream";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "audio/x-wav";
+        echo "<span class='fa fa-file-audio-o'></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "";
+        echo "<span class='fa '></span>";
+        break;
+    case "application/vnd.openxmlformats-officedocument. spreadsheetml.sheet";
+        echo "<span class='fa fa-file-excel-o'></span>";
+        break;
+    case "application/msexcel";
+        echo "<span class='fa fa-file-excel-o'></span>";
+        break;
+    case "application/pdf";
+        echo "<span class='fa fa-file-pdf-o'></span>";
+        break;
+    case "image/jpeg";
+        echo "<span class='fa fa-file-image-o'></span>";
+        break;
+    case "application/pdf";
+        echo "<span class='fa fa-file-pdf-o'></span>";
+        break;
+    default:
+        echo "<span class='fa fa-file'></span>";
+}

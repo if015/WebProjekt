@@ -1,8 +1,3 @@
-/**
- * Created by danielbrunner on 26.11.16.
- */
-
-
 //Datein löschen - funktioniert
 //eventuell noch Abfrage einbauen if(confirm...)?
 

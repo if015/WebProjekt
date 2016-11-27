@@ -1,0 +1,10 @@
+###   Datenbankzugangsdaten   ###
+
+Datenbankname      : u-db118
+Datenbanklogin     : db118
+Datenbankpasswort  : iad1jai1Ai
+
+Sie koennen Ihre mySQL-Datenbank ueber die phpMyAdmin-Oberflaeche
+unter:
+  https://mars.iuk.hdm-stuttgart.de/phpmyadmin/
+verwalten.
