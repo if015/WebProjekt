@@ -2,14 +2,12 @@
 session_start();
 $dir ='../uploads/' . $_SESSION['dir'] . '/';
 
-$oldname = $_POST['oldname'];
-$newname = $_POST['newname'];
-
-$newname = htmlspecialchars($newname);
+$oldname = $_POST['pk'];
+$newname = $_POST['value'];
 
 //echo $oldname;
 //echo $newname;
 
 rename($dir.$oldname, $dir.$newname);
 
-header("Location: ../files.php");
+//header("Location: ../files.php");

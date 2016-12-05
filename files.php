@@ -12,13 +12,19 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 <body>
 
+
+<button class="btn btn-default btn-lg">
+    <span class="fa fa-upload"></span> Upload
+</button>
 <form action="includes/logout.inc.php">
-    <button class="btn btn-default btn-lg">Abmelden</button>
+    <button class="btn btn-default btn-lg">
+        <span class="fa fa-sign-out"></span> Abmelden
+    </button>
 </form>
 
 <h1>Meine Dateien</h1>
 
-<table class="table">
+<table id="userfiles" class="table">
     <thead>
     <tr>
         <th></th>
@@ -34,6 +40,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
     //Anzeigen der Dateien
     foreach (scandir($dir) as $file) {
         $fileinfo = pathinfo($dir."/".$file);
+        $place = $dir . $file;
         $size = ceil(filesize($dir."/".$file)/1024) . "kb";
         $sizeadd += $size;
         $mdate = filemtime($dir."/".$file);
@@ -43,33 +50,32 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             ?>
 
             <tr>
-
-                <!-- noch ersetzen durch Bild:: Pfadname??? >> siehe includes/mimetype.inc.php
-                     FALSCHE AUSGABE?! >> geht mit mime_content_type-->
-
-                <td>
-                    <?php include 'includes/mimetype.inc.php'?>
-                </td>
-
-                <td><a href="<?php echo $fileinfo['dirname'] . "/" . $fileinfo['basename']; ?>">
+                <td><?php include 'includes/mimetype.inc.php'?></td>
+                <td class="filename">
+                    <a id="name"
+                       class="publicname-change"
+                       data-name="<?php echo $file; ?>"
+                       data-pk="<?php echo $file; ?>"
+                       data-type="text"
+                       href="<?php echo $place; ?>">
                         <span><?php echo $file; ?></span>
-                    </a></td>
+                    </a>
+                </td>
                 <td><?php echo $size; ?></td>
                 <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
-                <td>
-                    <div class="btn-group" role="group">
-                    <button class="btn btn-link">
-                        <span id="<?php echo $fileinfo['dirname'] . "/" . $fileinfo['basename']; ?>"
-                              class="unlink fa fa-trash">
-                        </span>
-                    </button>
-                    <button class="btn btn-link">
-                        <span class="fa fa-edit"></span>
-                    </button>
-                    <button class="btn btn-link">
-                        <span class="fa fa-share"></span>
-                    </button>
-                    </div>
+                <td class="">
+                        <button class="btn btn-link">
+                            <span id="<?php echo $fileinfo['dirname'] . '/' . $fileinfo['basename']; ?>"
+                                class="unlink fa fa-trash">
+                            </span>
+                        </button>
+
+                        <button class="edit btn btn-link">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                        <button class="btn btn-link">
+                            <span class="fa fa-share"></span>
+                        </button>
                 </td>
             </tr>
 
@@ -82,16 +88,11 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 <br><br><br>
 
-<h2>Freier Speicherplatz</h2>
+<h3>Freier Speicherplatz</h3>
 
-<h3>Verfügbarer Spreicherplatz</h3>
 <?php
-echo $_SESSION['size']/1024 .' MB';
-?>
-<h3>Belegter Speicherplatz</h3>
-<?php
-$sizeaddMB = (int)($sizeadd/1024);
-echo $sizeaddMB .' MB';
+$sizeaddMB = $sizeadd/1024;
+echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_SESSION['size']/1024 .' MB belegt';
 ?>
 
 <br><br><br>

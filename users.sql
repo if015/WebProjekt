@@ -1,7 +1,0 @@
-CREATE TABLE users (
-  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY ,
-  email VARCHAR(255) UNIQUE KEY ,
-  vorname VARCHAR(255) ,
-  nachname VARCHAR(255) ,
-  password VARCHAR(255)
-)

@@ -14,6 +14,28 @@ if (isset($_SESSION['id'])) {
 
 <!-- Anmeldeformular -->
 
+
+
+<form action="includes/login.inc.php" method="post">
+    <div class="input-group input-group">
+        <span class="input-group-addon">
+            <span class="fa fa-at"></span>
+        </span>
+        <input type="text" name="email" class="form-control" placeholder="E-Mail" aria-describedby="sizing-addon1">
+    </div>
+    <div class="input-group input-group">
+        <span class="input-group-addon">
+            <span class="fa fa-key"></span>
+        </span>
+        <input type="password" name="pwd" class="form-control" placeholder="Passwort" aria-describedby="sizing-addon1">
+    </div>
+    <br>
+    <button class="btn btn-default btn" type="submit">
+        <span class="fa fa-sign-in"></span> Anmelden
+    </button>
+</form>
+
+
 <form action="includes/login.inc.php" method="post">
     <input type="text" name="email" placeholder="E-Mail">
     <input type="password" name="pwd" placeholder="Passwort">
@@ -22,9 +44,11 @@ if (isset($_SESSION['id'])) {
 
 <br><br><br><br><br>
 
-<!-- Registrierungsformular -->
 
 <!--
+Registrierungsformular
+
+
 <form action="includes/register.inc.php" method="post">
     <input type="text" name="email" placeholder="E-Mail"><br>
     <input type="text" name="first" placeholder="Vorname"><br>
