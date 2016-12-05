@@ -15,4 +15,4 @@ ToDos
 - Speicherplatz anzeigen
 - Schöner machen!!!
 
-bisher: https://mars.iuk.hdm-stuttgart.de/~db118/main.php
+bisher: https://mars.iuk.hdm-stuttgart.de/~db118/webprojekt/
