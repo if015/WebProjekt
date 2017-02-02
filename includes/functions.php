@@ -1,11 +1,11 @@
 <?php
 
-//Funktion draus machen.
+//MIME-Type als Icon anzeigen
 
-function showMeme($mime) {
+function showMime($path) {
+    $mime = mime_content_type($path);
+
     switch($mime) {
-
-
         case "application/gzip";
             echo "<span class='fa fa-file-archive-o'></span>";
             break;

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'includes/dbh.inc.php';
+
 echo "
 <!DOCTYPE html>
 <head>

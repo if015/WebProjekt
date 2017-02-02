@@ -1,75 +1,122 @@
 <?php
 
 include 'header.php';
+include 'includes/functions.php';
 
-
-//Überprüfung ob kein User angemeldet ist, dann wir zurückgeleitet auf index.php
+/*
+ *  Es wird überprüft, ob ein Nutzer angemeldet ist. Ist dies nicht
+ *  der Fall, wird umgeleitet auf index.php.
+ */
 if (!isset($_SESSION['id'])) {
     header('Location: index.php');
 }
+/*
+ *  Variable $dir beinhaltet den Pfad zum Upload-Ordner, abhängig
+ *  vom jeweiligen Nutzer.
+ *
+ */
 $dir ='uploads/' . $_SESSION['dir'] . '/';
 ?>
 
 <body>
 
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Navigation einblenden</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="fa fa-bomb"></span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Dateien</a></li>
+                    <li><a href="#">Papierkorb</a></li>
+                    <li><a href="#">Profil</a></li>
+                </ul>
+                <form action="includes/logout.inc.php" class="navbar-form navbar-right">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="fa fa-sign-out"></span> Abmelden
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
 
-<button class="btn btn-default btn-lg">
-    <span class="fa fa-upload"></span> Upload
-</button>
-<form action="includes/logout.inc.php">
-    <button class="btn btn-default btn-lg">
-        <span class="fa fa-sign-out"></span> Abmelden
-    </button>
-</form>
+<section>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Meine Dateien</h3>
+            </div>
 
-<h1>Meine Dateien</h1>
+            <table id="userfiles" class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th align="left">Datei</th>
+                    <th align="left">Größe</th>
+                    <th align="left">Letzte Änderung</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-<table id="userfiles" class="table">
-    <thead>
-    <tr>
-        <th></th>
-        <th align="left">Datei</th>
-        <th align="left">Größe</th>
-        <th align="left">Letzte Änderung</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
+                <tbody>
+
 
     <?php
-    //Anzeigen der Dateien
+/*
+ * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
+ *
+ * AUFGABEN:
+ *    - Umschreiben als Funktion (extern)
+ *       - MIME-Type (X)
+ *       - Downloadlink (X)
+ *
+ */
     foreach (scandir($dir) as $file) {
-        $fileinfo = pathinfo($dir."/".$file);
-        $place = $dir . $file;
-        $size = ceil(filesize($dir."/".$file)/1024) . "kb";
+
+        //Pfad zur Datei
+        $path = $dir . $file;
+
+        //Dateigröße in kb
+        $size = ceil(filesize($path)/1024) . " kb";
+
         $sizeadd += $size;
-        $mdate = filemtime($dir."/".$file);
-        $mime = mime_content_type($fileinfo['dirname'] . "/" . $fileinfo['basename']);
-        //$finfo = new finfo(FILEINFO_MIME, "share/file/magic");
+        $mdate = filemtime($path);
+
+
         if ($file != '.' && $file != '..') {
             ?>
 
             <tr>
-                <td><?php include 'includes/mimetype.inc.php'?></td>
+                <td><?php showMime($path)?></td>
                 <td class="filename">
                     <a id="name"
                        class="publicname-change"
                        data-name="<?php echo $file; ?>"
                        data-pk="<?php echo $file; ?>"
                        data-type="text"
-                       href="<?php echo $place; ?>">
+                       href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
                         <span><?php echo $file; ?></span>
                     </a>
+
                 </td>
                 <td><?php echo $size; ?></td>
                 <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
-                <td class="">
+                <td>
                         <button class="btn btn-link">
-                            <span id="<?php echo $fileinfo['dirname'] . '/' . $fileinfo['basename']; ?>"
+                            <span id="<?php echo $path; ?>"
                                 class="unlink fa fa-trash">
                             </span>
                         </button>
-
                         <button class="edit btn btn-link">
                             <span class="fa fa-edit"></span>
                         </button>
@@ -85,8 +132,20 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
     ?>
     </tbody>
 </table>
+</div>
+    </div>
+</section>
 
 <br><br><br>
+
+<!-- Anzeige des freien Speicherplatzes
+
+     AUFGABE:
+     - Grafische Darstellung
+     - Überprüfung einbauen in Dateiupload, ob genügend Speicher
+       vorhanden ist.
+
+     -->
 
 <h3>Freier Speicherplatz</h3>
 
@@ -98,7 +157,13 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 <br><br><br>
 
 
-<!-- Upload-Formular -->
+<!-- Upload-Formular
+
+     AUFGABE:
+     - Auslagern? Modal?
+     - Drag and Drop.
+
+    -->
 
 <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file"><br>
@@ -108,12 +173,25 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 <!-- Namen einer Datei ändern. Funktionert, ist aber nicht schön. Ich suche bessere Alternativen
      funktioniert nur in der foreach Schleife!
 
+     -> Bessere Alternative ist eingebaut, Kommentar kann gelöscht werden.
+
      <form action="./includes/rename.inc.php" method="post">
                         <input type="text" name="newname" placeholder="Neuer Name">
                         <button type="submit" name="oldname"
                                 value="<?php //echo $fileinfo['basename']; ?>">Umbenennen</button>
                     </form>
 -->
+<footer>
+    <!-- Footer einfügen
+         z.B. Links: FAQ, Impressum, Hilfe-->
+</footer>
 </body>
 
 </html>
+
+<!--
+    ZUSATZFUNKTIONEN?
+    - Papierkorb
+    - Bilderanzeige
+
+-->
