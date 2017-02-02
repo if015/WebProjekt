@@ -15,6 +15,9 @@ if ($user != false && password_verify($pwd, $user['pwd'])) {
     $_SESSION['size'] = $user['size'];
     header('Location: ../files.php');
 
-} else {
+}
+
+else {
     echo "Fehler";
+    //über GET auf index.php anzeigen!
 }

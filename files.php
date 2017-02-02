@@ -170,17 +170,6 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
     <button type="submit">Upload</button>
 </form>
 
-<!-- Namen einer Datei ändern. Funktionert, ist aber nicht schön. Ich suche bessere Alternativen
-     funktioniert nur in der foreach Schleife!
-
-     -> Bessere Alternative ist eingebaut, Kommentar kann gelöscht werden.
-
-     <form action="./includes/rename.inc.php" method="post">
-                        <input type="text" name="newname" placeholder="Neuer Name">
-                        <button type="submit" name="oldname"
-                                value="<?php //echo $fileinfo['basename']; ?>">Umbenennen</button>
-                    </form>
--->
 <footer>
     <!-- Footer einfügen
          z.B. Links: FAQ, Impressum, Hilfe-->
