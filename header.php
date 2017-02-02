@@ -4,6 +4,9 @@ include 'includes/dbh.inc.php';
 
 echo "
 <!DOCTYPE html>
+
+<html>
+
 <head>
     <title>Box</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>

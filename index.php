@@ -23,7 +23,7 @@ if (isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    
+
                     <!-- LOGO LOGO LOGO LOGO LOGO -->
 
                     <span class="fa fa-bomb"></span>

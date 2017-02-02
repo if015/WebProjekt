@@ -16,6 +16,7 @@ if (!isset($_SESSION['id'])) {
  *  vom jeweiligen Nutzer.
  *
  */
+
 $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 ?>
 
@@ -55,7 +56,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Meine Dateien</h3>
+                <h3 class="panel-title">Meine gelöschten Dateien</h3>
             </div>
 
             <table id="userfiles" class="table">
@@ -64,7 +65,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                     <th></th>
                     <th align="left">Datei</th>
                     <th align="left">Größe</th>
-                    <th align="left">Letzte Änderung</th>
+                    <th align="left">gelöscht</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -86,12 +87,13 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 
                     //Pfad zur Datei
                     $path = $dir . $file;
+                    $fileinfo = pathinfo($file);
 
                     //Dateigröße in kb
                     $size = ceil(filesize($path)/1024) . " kb";
 
                     $sizeadd += $size;
-                    $mdate = filemtime($path);
+                    $cdate = filectime($path);
 
 
                     if ($file != '.' && $file != '..') {
@@ -111,18 +113,17 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 
                             </td>
                             <td><?php echo $size; ?></td>
-                            <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
+                            <td><?php echo date("d.m.Y H:i", $cdate); ?></td>
                             <td>
+                                <button class="btn btn-link">
+                            <span id="<?php echo $fileinfo['basename']; ?>"
+                                  class="undo fa fa-undo">
+                            </span>
+                                </button>
                                 <button class="btn btn-link">
                             <span id="<?php echo $path; ?>"
                                   class="unlink fa fa-trash">
                             </span>
-                                </button>
-                                <button class="edit btn btn-link">
-                                    <span class="fa fa-edit"></span>
-                                </button>
-                                <button class="btn btn-link">
-                                    <span class="fa fa-share"></span>
                                 </button>
                             </td>
                         </tr>
@@ -133,43 +134,17 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                 ?>
                 </tbody>
             </table>
+            <div class="text-right" style="margin: 5px">
+            <button class="btn btn-primary text-right">
+                <span class="fa fa-battery-empty">
+                     Papierkorb leeren
+                </span>
+            </button>
+            </div>
         </div>
     </div>
 </section>
 
-<br><br><br>
-
-<!-- Anzeige des freien Speicherplatzes
-
-     AUFGABE:
-     - Grafische Darstellung
-     - Überprüfung einbauen in Dateiupload, ob genügend Speicher
-       vorhanden ist.
-
-     -->
-
-<h3>Freier Speicherplatz</h3>
-
-<?php
-$sizeaddMB = $sizeadd/1024;
-echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_SESSION['size']/1024 .' MB belegt';
-?>
-
-<br><br><br>
-
-
-<!-- Upload-Formular
-
-     AUFGABE:
-     - Auslagern? Modal?
-     - Drag and Drop.
-
-    -->
-
-<form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"><br>
-    <button type="submit">Upload</button>
-</form>
 
 <footer>
     <!-- Footer einfügen

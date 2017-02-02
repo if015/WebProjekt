@@ -59,6 +59,7 @@ VALUES (:email, :first, :last, :pwd, :dir)");
 
 //Benutzerverzeichnis wird mit dem Hash der Email-Adresse erstellt
     mkdir("../uploads/$dir", 0777, true);
+    mkdir("../uploads/$dir/trash", 0777, true);
 
     if ($result) {
         //echo "Registrierung abgeschlossen";

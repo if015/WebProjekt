@@ -92,13 +92,16 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
         $sizeadd += $size;
         $mdate = filemtime($path);
 
-
-        if ($file != '.' && $file != '..') {
+        //if ($file != '.' && $file != '..' || !is_dir($file)) {
+        if (!is_dir($path)) {
             ?>
 
             <tr>
                 <td><?php showMime($path)?></td>
                 <td class="filename">
+
+                    <!-- DOWNLOADLINK -->
+                    <span>
                     <a id="name"
                        class="publicname-change"
                        data-name="<?php echo $file; ?>"
@@ -107,18 +110,20 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                        href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
                         <span><?php echo $file; ?></span>
                     </a>
+                    </span>
 
                 </td>
                 <td><?php echo $size; ?></td>
                 <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
                 <td>
                         <button class="btn btn-link">
-                            <span id="<?php echo $path; ?>"
-                                class="unlink fa fa-trash">
+                            <span id="<?php echo $file; ?>"
+                                class="movetotrash fa fa-trash">
                             </span>
                         </button>
                         <button class="edit btn btn-link">
                             <span class="fa fa-edit"></span>
+
                         </button>
                         <button class="btn btn-link">
                             <span class="fa fa-share"></span>

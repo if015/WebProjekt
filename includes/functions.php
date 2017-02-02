@@ -111,3 +111,7 @@ function showMime($path) {
     }
 }
 
+function moveToTrash (){
+
+}
+
