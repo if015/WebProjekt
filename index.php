@@ -23,14 +23,16 @@ if (isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
+                    
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
                     <span class="fa fa-bomb"></span>
+
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Bla</a></li>
-                    <li><a href="#signup">Registrieren</a></li>
-                </ul>
                 <!-- Anmeldeformular -->
                 <form action="includes/login.inc.php" class="navbar-form navbar-right" method="post">
                     <div class="form-group">
