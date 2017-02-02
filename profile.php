@@ -36,9 +36,9 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Dateien</a></li>
-                    <li><a href="#">Papierkorb</a></li>
-                    <li><a href="#">Profil</a></li>
+                    <li><a href="files.php">Dateien</a></li>
+                    <li><a href="trash.php">Papierkorb</a></li>
+                    <li class="active"><a href="#">Profil</a></li>
                 </ul>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-primary">

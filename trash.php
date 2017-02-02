@@ -7,6 +7,7 @@ include 'includes/functions.php';
  *  Es wird überprüft, ob ein Nutzer angemeldet ist. Ist dies nicht
  *  der Fall, wird umgeleitet auf index.php.
  */
+
 if (!isset($_SESSION['id'])) {
     header('Location: index.php');
 }
@@ -15,7 +16,7 @@ if (!isset($_SESSION['id'])) {
  *  vom jeweiligen Nutzer.
  *
  */
-$dir ='uploads/' . $_SESSION['dir'] . '/';
+$dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 ?>
 
 <body>
@@ -36,8 +37,8 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Dateien</a></li>
-                    <li><a href="trash.php">Papierkorb</a></li>
+                    <li><a href="files.php">Dateien</a></li>
+                    <li class="active"><a href="#">Papierkorb</a></li>
                     <li><a href="profile.php">Profil</a></li>
                 </ul>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
@@ -71,68 +72,68 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                 <tbody>
 
 
-    <?php
-/*
- * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
- *
- * AUFGABEN:
- *    - Umschreiben als Funktion (extern)
- *       - MIME-Type (X)
- *       - Downloadlink (X)
- *
- */
-    foreach (scandir($dir) as $file) {
+                <?php
+                /*
+                 * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
+                 *
+                 * AUFGABEN:
+                 *    - Umschreiben als Funktion (extern)
+                 *       - MIME-Type (X)
+                 *       - Downloadlink (X)
+                 *
+                 */
+                foreach (scandir($dir) as $file) {
 
-        //Pfad zur Datei
-        $path = $dir . $file;
+                    //Pfad zur Datei
+                    $path = $dir . $file;
 
-        //Dateigröße in kb
-        $size = ceil(filesize($path)/1024) . " kb";
+                    //Dateigröße in kb
+                    $size = ceil(filesize($path)/1024) . " kb";
 
-        $sizeadd += $size;
-        $mdate = filemtime($path);
+                    $sizeadd += $size;
+                    $mdate = filemtime($path);
 
 
-        if ($file != '.' && $file != '..') {
-            ?>
+                    if ($file != '.' && $file != '..') {
+                        ?>
 
-            <tr>
-                <td><?php showMime($path)?></td>
-                <td class="filename">
-                    <a id="name"
-                       class="publicname-change"
-                       data-name="<?php echo $file; ?>"
-                       data-pk="<?php echo $file; ?>"
-                       data-type="text"
-                       href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
-                        <span><?php echo $file; ?></span>
-                    </a>
+                        <tr>
+                            <td><?php showMime($path)?></td>
+                            <td class="filename">
+                                <a id="name"
+                                   class="publicname-change"
+                                   data-name="<?php echo $file; ?>"
+                                   data-pk="<?php echo $file; ?>"
+                                   data-type="text"
+                                   href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
+                                    <span><?php echo $file; ?></span>
+                                </a>
 
-                </td>
-                <td><?php echo $size; ?></td>
-                <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
-                <td>
-                        <button class="btn btn-link">
+                            </td>
+                            <td><?php echo $size; ?></td>
+                            <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
+                            <td>
+                                <button class="btn btn-link">
                             <span id="<?php echo $path; ?>"
-                                class="unlink fa fa-trash">
+                                  class="unlink fa fa-trash">
                             </span>
-                        </button>
-                        <button class="edit btn btn-link">
-                            <span class="fa fa-edit"></span>
-                        </button>
-                        <button class="btn btn-link">
-                            <span class="fa fa-share"></span>
-                        </button>
-                </td>
-            </tr>
+                                </button>
+                                <button class="edit btn btn-link">
+                                    <span class="fa fa-edit"></span>
+                                </button>
+                                <button class="btn btn-link">
+                                    <span class="fa fa-share"></span>
+                                </button>
+                            </td>
+                        </tr>
 
-            <?php
-        }
-    }
-    ?>
-    </tbody>
-</table>
-</div>
+                        <?php
+                    }
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 
@@ -177,10 +178,3 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 </body>
 
 </html>
-
-<!--
-    ZUSATZFUNKTIONEN?
-    - Papierkorb
-    - Bilderanzeige
-
--->
