@@ -13,6 +13,6 @@ ToDos
 - Dateien löschen
 - Dateien teilen
 - Speicherplatz anzeigen
-- Schöner machen!!!
+- Schöner machen!!! Isi? :)
 
 bisher: https://mars.iuk.hdm-stuttgart.de/~db118/webprojekt/
