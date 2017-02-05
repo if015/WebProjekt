@@ -167,14 +167,15 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
      AUFGABE:
      - Auslagern? Modal?
      - Drag and Drop.
+-->
 
-    -->
-
+<!--
 <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file"><br>
     <button type="submit">Upload</button>
 </form>
 
+    -->
 <footer>
     <!-- Footer einfügen
          z.B. Links: FAQ, Impressum, Hilfe-->
