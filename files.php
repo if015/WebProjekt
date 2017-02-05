@@ -171,9 +171,13 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 -->
 
 
-<form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
+<!--form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file"><br>
     <button type="submit">Upload</button>
+</form-->
+
+    <form enctype="multipart/form-data" id="yourregularuploadformId">
+     <input type="file" name="files[]" multiple="multiple">
 </form>
     
 <footer>
