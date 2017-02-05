@@ -169,7 +169,32 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
      - Auslagern? Modal?
      - Drag and Drop.
 -->
+<div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
+        <div class="panel-body">
 
+          
+          <h4>Datei auswählen</h4>
+          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="file" name="files[]" id="js-upload-files" multiple>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            </div>
+          </form>
+
+          <!-- Drop Zone -->
+          <h4>oder Datei reinziehen</h4>
+          <div class="upload-drop-zone" id="drop-zone" >
+           Ziehen Sie die Datei
+          </div>
+            
+              
+        </div>
+      </div>
+    </div> 
 
 <!--form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file"><br>
