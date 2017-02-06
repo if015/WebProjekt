@@ -1,6 +1,6 @@
 <?php
 
-$conn = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-db118', 'db118', 'iad1jai1Ai');
+$conn = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de;dbname=u-if015', 'if015', 'vohcie1ETh');
 
 if (!$conn) {
     die("Verbindung zur Datenbank konnte nicht hergestellt werden");
