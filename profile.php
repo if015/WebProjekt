@@ -57,7 +57,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
     <div id="signup" class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Registrieren</h3>
+            <h3 class="panel-title">Profil ändern</h3>
         </div>
         <div class="panel-body">
 
@@ -92,7 +92,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                 }
 
             if (!empty($_GET['success'])) {
-                $successmsg = "Du hast dich erfolgreich registriert und kannst dich nun anmelden!";
+                $successmsg = "Deine Änderungen wurden erfolgreich übernommen!";
                 ?>
 
                 <div class='alert alert-success alert-dismissible' role='alert'>
@@ -132,7 +132,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10 text-right">
-            <button type="submit" class="btn btn-primary">Registrieren</button>
+            <button type="submit" class="btn btn-primary">Änderungen übernehmen</button>
         </div>
     </div>
 </form>
