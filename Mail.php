@@ -5,6 +5,9 @@
  * Date: 06.02.17
  * Time: 21:11
  */
+session_start();
+include 'header.php';
+include 'includes/functions.php';
 
 $mailtext = '<html>
 <head>
