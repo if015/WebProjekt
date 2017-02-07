@@ -131,10 +131,17 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
         </div>
     </div>
     <div class="form-group">
+        <label for="pwdold" class="col-sm-2 control-label">Alter Passwort eingeben</label>
+        <div class="col-sm-10">
+            <input type="password" name="pwdold" class="form-control" id="pwdold" placeholder="Altes Passwort">
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10 text-right">
             <button type="submit" class="btn btn-primary">Änderungen übernehmen</button>
         </div>
     </div>
+    
 </form>
 </div>
 </div>

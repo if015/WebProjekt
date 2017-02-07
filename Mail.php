@@ -7,7 +7,7 @@
  */
 session_start();
 include 'header.php';
-include 'includes/functions.php';
+
 
 //es fehlt noch Bezug zu einem Button
 
