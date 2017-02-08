@@ -6,9 +6,6 @@
  * Time: 21:11
  */
 session_start();
-include 'files';
-
-//es fehlt noch Bezug zu einem Button
 
 $mailtext = '<html>
 <head>
