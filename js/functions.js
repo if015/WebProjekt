@@ -16,6 +16,37 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $(".movetotrash").click(function () {
+        var element = $(this);
+        var pkk = element.attr("id");
+        var value = "trash//"+pkk;
+        $.ajax({
+            type: "POST",
+            url: "includes/rename.inc.php",
+            data: {value:value, pk:pkk}
+        });
+        $(this).closest('tr').fadeOut('slow');
+        return false;
+    });
+});
+
+$(document).ready(function () {
+    $(".undo").click(function () {
+        var element = $(this);
+        var value = element.attr("id");
+        var pkk = "trash//"+value;
+        $.ajax({
+            type: "POST",
+            url: "includes/rename.inc.php",
+            data: {value:value, pk:pkk}
+        });
+        $(this).closest('tr').fadeOut('slow');
+        return false;
+    });
+});
+
+
 //Dateien umbennen - funktioniert
 
 
