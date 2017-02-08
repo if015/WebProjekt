@@ -206,8 +206,10 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 </form>
     
 <footer>
-    <!-- Footer einfügen
-         z.B. Links: FAQ, Impressum, Hilfe-->
+     <a href="#">FAQ</a>
+     <a href="#">Kontakt</a>
+     <a href="#">Impressum</a>
+     <a href="#">Datenschutz</a>
 </footer>
 </body>
 
