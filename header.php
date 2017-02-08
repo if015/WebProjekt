@@ -21,6 +21,7 @@ echo "
     <script src='js/bootstrap.js'></script>
     <script src='js/bootstrap-editable.min.js'></script>
     <script src='js/dropzone.js'></script>
+    <script src='js/dropzone-settings.js'></script>
     <script src='js/functions.js'></script>
     
     
