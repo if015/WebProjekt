@@ -18,7 +18,7 @@ if (empty($first) || empty($last) || empty($email) || empty($pwd) || empty($pwd2
 }
 
 // Passwort zu kurz
-if (strlen($pwd) <= 5) {
+if (strlen($pwd) < 5) {
     header('Location: ../index.php?error=password1');
     exit();
 }

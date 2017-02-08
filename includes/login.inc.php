@@ -13,6 +13,8 @@ if ($user != false && password_verify($pwd, $user['pwd'])) {
     $_SESSION['first'] = $user['first'];
     $_SESSION['dir'] = $user['dir'];
     $_SESSION['size'] = $user['size'];
+    $_SESSION['pwd'] = $user['pwd'];
+    
     header('Location: ../files.php');
 
 }

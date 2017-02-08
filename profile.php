@@ -15,7 +15,7 @@ if (!isset($_SESSION['id'])) {
  *  vom jeweiligen Nutzer.
  *
  */
-$dir ='uploads/' . $_SESSION['dir'] . '/';
+
 ?>
 
 <body>
@@ -71,12 +71,6 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             if (!empty($_GET['error']) && $_GET['error'] == "password2") {
                 $errormsg = "Die eingegebene Passwörter stimmen nicht überein!";
             }
-            if (!empty($_GET['error']) && $_GET['error'] == "unvalidemail") {
-                $errormsg = "Die eingegebene PE-Mail-Adresse ist nicht gültig!";
-            }
-            if (!empty($_GET['error']) && $_GET['error'] == "user") {
-                $errormsg = "Die angegegebenene E-Mail-Adresse wurde bereits registriert. Bitte eine andere Adresse angeben.";
-            }
 
                 if (isset($errormsg)) {
                     ?>
@@ -104,34 +98,16 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                     <?php echo $successmsg; ?> </div> <?php
             }
             ?>
-<form action="includes/register.inc.php" class="form-horizontal" method="post">
+<form action="includes/profile.inc.php" class="form-horizontal" method="post">
     <div class="form-group">
-        <label for="first" class="col-sm-2 control-label">Vorname</label>
-        <div class="col-sm-10">
-            <input type="text" name="first" class="form-control" id="first" placeholder="Vorname">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="last" class="col-sm-2 control-label">Nachname</label>
-        <div class="col-sm-10">
-            <input type="text" name="last" class="form-control" id="last" placeholder="Nachname">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">E-Mail</label>
-        <div class="col-sm-10">
-            <input type="email" name="email" class="form-control" id="email" placeholder="E-Mail">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="pwd" class="col-sm-2 control-label">Passwort</label>
+        <label for="pwd" class="col-sm-2 control-label">Neues Passwort</label>
         <div class="col-sm-10">
             <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Passwort">
             <input type="password" name="pwd2" class="form-control" placeholder="Passwort wiederholen">
         </div>
     </div>
     <div class="form-group">
-        <label for="pwdold" class="col-sm-2 control-label">Alter Passwort eingeben</label>
+        <label for="pwdold" class="col-sm-2 control-label">Altes Passwort eingeben</label>
         <div class="col-sm-10">
             <input type="password" name="pwdold" class="form-control" id="pwdold" placeholder="Altes Passwort">
         </div>
@@ -141,17 +117,26 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             <button type="submit" class="btn btn-primary">Änderungen übernehmen</button>
         </div>
     </div>
-    
+
 </form>
 </div>
 </div>
 
 
 </div>
+    <form action="includes/avatar.inc.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        </input>
+        <button type="submit">Hochladen</button>
+    </form>
+
 </section>
 
 
 <?php
+
+
+/*
 // Profilbildupload
 
 $upload_folder = 'upload/'; //Das Upload-Verzeichnis
@@ -204,7 +189,5 @@ if ($avatar['user_avatar'] != "") {
 } else {
 echo "<img class='tip' src='".IMAGES."avatars/noavatar50.png' border='0' alt='".$avatar['user_name']."' title='".$avatar['user_name']."' style='max-height:50px; max-width:50px;' />".$avatar['user_name'];
 
-
+*/
 ?>
-
-

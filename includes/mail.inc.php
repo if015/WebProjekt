@@ -6,8 +6,7 @@
  * Time: 21:11
  */
 session_start();
-include 'header.php';
-
+include 'files';
 
 //es fehlt noch Bezug zu einem Button
 

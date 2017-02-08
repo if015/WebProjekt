@@ -2,6 +2,7 @@
 
 include 'header.php';
 include 'includes/functions.php';
+include 'mail.inc.php';
 
 /*
  *  Es wird überprüft, ob ein Nutzer angemeldet ist. Ist dies nicht
@@ -120,9 +121,11 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                         <button class="edit btn btn-link">
                             <span class="fa fa-edit"></span>
                         </button>
-                        <button class="btn btn-link">
-                            <span class="fa fa-share"></span>
+                    <form action = "includes/mail.inc.php">
+                        <button type="submit" class="btn btn-link">
+                            <span class="fa fa-share"></span><form action = "includes/mail.inc.php">
                         </button>
+                    </form>
                 </td>
             </tr>
 
@@ -171,6 +174,8 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 </form>
 
 <footer>
+    <img src ="avatar/<?php echo $_SESSION['dir'].'.jpeg' ?>">
+
     <!-- Footer einfügen
          z.B. Links: FAQ, Impressum, Hilfe-->
 </footer>
