@@ -149,10 +149,10 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             <div class="panel-heading">
                 <h3 class="panel-title">Datei-Upload</h3>
             </div>
-            <div class="panel panel-body">
+            <div class="panel-body">
                 <form action="includes/upload.inc.php"
                       class="dropzone"
-                      id="my-awesome-dropzone">
+                      id="awesomeDropzone">
                 </form>
             </div>
         </div>
@@ -181,25 +181,7 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 <br><br><br>
 
 
-<!-- Upload-Formular
 
-     AUFGABE:
-     - Auslagern? Modal?
-     - Drag and Drop.
--->
-
-<form action="includes/upload.inc.php"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
-
-<!--form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"><br>
-    <button type="submit">Upload</button>
-</form-->
-
-    <form enctype="multipart/form-data" id="yourregularuploadformId">
-     <input type="file" name="files[]" multiple="multiple">
-</form>
     
 <footer>
      <a href="#">FAQ</a>
