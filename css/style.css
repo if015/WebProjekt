@@ -18,3 +18,13 @@
     background: linear-gradient(-45deg, #DB0CE8, #8041FF);
 }
 
+.dropzone {
+    padding: 30px;
+    height: 200px;
+    -webkit-border-radius: 30px 30px 30px 30px;
+    -moz-border-radius: 30px 30px 30px 30px;
+    border-radius: 30px 30px 30px 30px;
+    border-style: dashed;
+    border-color: #8041FF;
+    border-width: 2px;
+}
