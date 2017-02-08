@@ -54,92 +54,111 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 <section>
     <div class="container">
         <div class="panel panel-default">
+
             <div class="panel-heading">
                 <h3 class="panel-title">Meine Dateien</h3>
             </div>
 
-            <table id="userfiles" class="table">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th align="left">Datei</th>
-                    <th align="left">Größe</th>
-                    <th align="left">Letzte Änderung</th>
-                    <th></th>
-                </tr>
-                </thead>
+            <div class="panel-body">
 
-                <tbody>
+                <table id="userfiles" class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th align="left">Datei</th>
+                            <th align="left">Größe</th>
+                            <th align="left">Letzte Änderung</th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
 
-    <?php
-/*
- * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
- *
- * AUFGABEN:
- *    - Umschreiben als Funktion (extern)
- *       - MIME-Type (X)
- *       - Downloadlink (X)
- *
- */
-    foreach (scandir($dir) as $file) {
+                    <?php
 
-        //Pfad zur Datei
-        $path = $dir . $file;
+                    /*
+                     * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
+                     *
+                     * AUFGABEN:
+                     *    - Umschreiben als Funktion (extern)
+                     *       - MIME-Type (X)
+                     *       - Downloadlink (X)
+                     *
+                     */
 
-        //Dateigröße in kb
-        $size = ceil(filesize($path)/1024) . " kb";
+                    foreach (scandir($dir) as $file) {
 
-        $sizeadd += $size;
-        $mdate = filemtime($path);
+                    //Pfad zur Datei
+                    $path = $dir . $file;
 
-        //if ($file != '.' && $file != '..' || !is_dir($file)) {
-        if (!is_dir($path)) {
-            ?>
+                    //Dateigröße in kb
+                    $size = ceil(filesize($path)/1024) . " kb";
 
-            <tr>
-                <td><?php showMime($path)?></td>
-                <td class="filename">
+                    $sizeadd += $size;
+                    $mdate = filemtime($path);
 
-                    <!-- DOWNLOADLINK -->
-                    <span>
-                    <a id="name"
-                       class="publicname-change"
-                       data-name="<?php echo $file; ?>"
-                       data-pk="<?php echo $file; ?>"
-                       data-type="text"
-                       href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
-                        <span><?php echo $file; ?></span>
-                    </a>
-                    </span>
+                    //if ($file != '.' && $file != '..' || !is_dir($file)) {
+                    if (!is_dir($path)) {
+                    ?>
 
-                </td>
-                <td><?php echo $size; ?></td>
-                <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
-                <td>
-                        <button class="btn btn-link">
-                            <span id="<?php echo $file; ?>"
-                                class="movetotrash fa fa-trash">
-                            </span>
-                        </button>
-                        <button class="edit btn btn-link">
-                            <span class="fa fa-edit"></span>
+                        <tr>
+                            <td><?php showMime($path)?></td>
+                            <td class="filename">
 
-                        </button>
-                        <button class="btn btn-link">
-                            <span class="fa fa-share"></span>
-                        </button>
-                </td>
-            </tr>
+                                <!-- DOWNLOADLINK -->
+                                <a id="name"
+                                   class="publicname-change"
+                                   data-name="<?php echo $file; ?>"
+                                   data-pk="<?php echo $file; ?>"
+                                   data-type="text"
+                                   href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
+                                    <span><?php echo $file; ?></span>
+                                </a>
 
-            <?php
-        }
-    }
-    ?>
-    </tbody>
-</table>
-</div>
+                            </td>
+
+                            <td><?php echo $size; ?></td>
+                            <td><?php echo date("d.m.Y H:i", $mdate); ?></td>
+                            <td>
+                                <button class="btn btn-link">
+                                    <span id="<?php echo $file; ?>"
+                                          class="movetotrash fa fa-trash">
+                                    </span>
+                                </button>
+                                <button class="edit btn btn-link">
+                                    <span class="fa fa-edit"></span>
+
+                                </button>
+                                <button class="btn btn-link">
+                                    <span class="fa fa-share"></span>
+                                </button>
+                            </td>
+                        </tr>
+
+                    <?php
+                    }
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datei-Upload</h3>
+            </div>
+            <div class="panel panel-body">
+                <form action="includes/upload.inc.php"
+                      class="dropzone"
+                      id="my-awesome-dropzone">
+                </form>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <br><br><br>
@@ -169,32 +188,10 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
      - Auslagern? Modal?
      - Drag and Drop.
 -->
-<div class="container">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
-        <div class="panel-body">
 
-          
-          <h4>Datei auswählen</h4>
-          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-            <div class="form-inline">
-              <div class="form-group">
-                <input type="file" name="files[]" id="js-upload-files" multiple>
-              </div>
-              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
-            </div>
-          </form>
-
-          <!-- Drop Zone -->
-          <h4>oder Datei reinziehen</h4>
-          <div class="upload-drop-zone" id="drop-zone" >
-           Ziehen Sie die Datei
-          </div>
-            
-              
-        </div>
-      </div>
-    </div> 
+<form action="includes/upload.inc.php"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
 
 <!--form action="includes/upload.inc.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file"><br>
