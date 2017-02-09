@@ -12,7 +12,7 @@ $alldata = scandir('files'); // ordner, wo bei mir dateien liegen
 foreach ($alldata as $file) {
 	$info = pathinfo('files'."/".$file); 
 	
-	if ($datei != "." && $datei != ".."  && $datei != "_notes" && $bildinfo['basename'] != "Thumbs.db")  
+	if ($file != "." && $file != ".."  && $file != "_notes" && $dateiinfo['basename'] != "Thumbs.db")  
  {
 	$bildtypen= array("jpg", "jpeg", "gif", "png");
  	if(in_array($dateiinfo['extension'],$bildtypen)){
