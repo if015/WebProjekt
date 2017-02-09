@@ -4,7 +4,7 @@
 
 Dropzone.options.awesomeDropzone = {
     paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
+    maxFilesize: 5, // MB
     dictDefaultMessage: "Ziehe die Datei hier herein",
     thumbnailHeight: 60, thumbnailWidth: 60,
     init: function () {
@@ -15,3 +15,5 @@ Dropzone.options.awesomeDropzone = {
         });
     }
 };
+
+$("#inputUpload").fileinput();
