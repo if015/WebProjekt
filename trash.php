@@ -40,7 +40,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                 <ul class="nav navbar-nav">
                     <li><a href="files.php">Dateien</a></li>
                     <li class="active"><a href="#">Papierkorb</a></li>
-                    <li><a href="profile.php">Profil</a></li>
+                    <li><a href="profile_copy.php">Profil</a></li>
                 </ul>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-primary">
@@ -96,7 +96,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                     $cdate = filectime($path);
 
 
-                    if ($file != '.' && $file != '..') {
+                    if (!is_dir($path)) {
                         ?>
 
                         <tr>
@@ -128,22 +128,32 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                             </td>
                         </tr>
 
+                        <!-- Dateien werden nach sieben Tagen automatisch gelöscht -->
+
                         <?php
+                        if (time() < ($cdate + (7*24*60*60))) {
+                            unlink($path);
+                        }
                     }
                 }
                 ?>
                 </tbody>
             </table>
-            <div class="text-right" style="margin: 5px">
-            <button class="btn btn-primary text-right">
-                <span class="fa fa-battery-empty">
-                     Papierkorb leeren
-                </span>
-            </button>
             </div>
         </div>
     </div>
+    <div class="container">
+        <!-- Papierkorb leeren  -->
+        <form action="includes/unlinkall.inc.php">
+            <button type="submit" class="btn btn-primary">
+                <span class="fa fa-trash"> Papierkorb leeren</span>
+            </button>
+        </form>
+    </div>
 </section>
+
+
+
 
 
 <footer>

@@ -40,6 +40,9 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                     <li><a href="trash.php">Papierkorb</a></li>
                     <li><a href="profile.php">Profil</a></li>
                 </ul>
+                <button type="button" class="navbar-btn btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+                    <span class="fa fa-upload"> Upload</span>
+                </button>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-primary">
                         <span class="fa fa-sign-out"></span> Abmelden
@@ -78,30 +81,27 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                     /*
                      * Anzeigen der Dateien über eine foreach-Schleife und scandir($dir)
                      *
-                     * AUFGABEN:
-                     *    - Umschreiben als Funktion (extern)
-                     *       - MIME-Type (X)
-                     *       - Downloadlink (X)
-                     *
                      */
 
                     foreach (scandir($dir) as $file) {
 
-                    //Pfad zur Datei
-                    $path = $dir . $file;
+                    $path = $dir . $file;                       //Pfad zur Datei
+                    $size = ceil(filesize($path)/1024) . " kb"; //Dateigröße
+                    $sizeadd += $size;                          //Dateigröße akkumuliert
+                    $mdate = filemtime($path);                  //Zeitpunkt der letzten Bearbeitung
 
-                    //Dateigröße in kb
-                    $size = ceil(filesize($path)/1024) . " kb";
+                    /*
+                     * Überprüfung, ob Datei kein Verzeichnis ist.
+                     */
 
-                    $sizeadd += $size;
-                    $mdate = filemtime($path);
-
-                    //if ($file != '.' && $file != '..' || !is_dir($file)) {
                     if (!is_dir($path)) {
                     ?>
 
                         <tr>
-                            <td><?php showMime($path)?></td>
+                            <td>
+                                <!-- Bestimmung und Anzeige des Mime-Types -->
+                                <?php showMime($path)?>
+                            </td>
                             <td class="filename">
 
                                 <!-- DOWNLOADLINK -->
@@ -110,7 +110,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                                    data-name="<?php echo $file; ?>"
                                    data-pk="<?php echo $file; ?>"
                                    data-type="text"
-                                   href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
+                                   href="includes/download.inc.php?file=<?php echo $file ?>">
                                     <span><?php echo $file; ?></span>
                                 </a>
 
@@ -128,9 +128,24 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                                     <span class="fa fa-edit"></span>
 
                                 </button>
+
+                                <!--
+                                <form action = "includes/mail.inc.php">
+                                    <button type="submit" class="btn btn-link">
+                                        <span class="fa fa-share"></span><form action = "includes/mail.inc.php">
+                                    </button>
+                                </form>
+                                -->
+
+                                <button class="btn btn-link" data-toggle="modal" data-target="#shareModal">
+                                    <span class="fa fa-share"></span>
+                                </button>
+
+                                <!--
                                 <button class="btn btn-link">
                                     <span class="fa fa-share"></span>
                                 </button>
+                                -->
                             </td>
                         </tr>
 
@@ -145,18 +160,60 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
     </div>
 
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Datei-Upload</h3>
-            </div>
-            <div class="panel-body">
-                <form action="includes/upload.inc.php"
-                      class="dropzone"
-                      id="awesomeDropzone">
-                </form>
+        <h1></h1>
+    </div>
+
+
+
+
+    <!-- Fileupload in einem Modal -->
+
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="Upload">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Upload</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="includes/upload.inc.php"
+                          class="dropzone"
+                          id="awesomeDropzone">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Dateilink über E-Mail versenden -->
+
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="Upload">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Upload</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="includes/mail.inc.php" method="post">
+                        Absender:<br>
+                        Betreff: <br>
+                        Zieladresse: <br>
+                        <button type="submit">
+                            <span class="fa fa-send"> Senden</span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </section>
 
@@ -184,10 +241,12 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 
     
 <footer>
-     <a href="#">FAQ</a>
-     <a href="#">Kontakt</a>
-     <a href="#">Impressum</a>
-     <a href="#">Datenschutz</a>
+    <div class="container">
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </div>
 </footer>
 </body>
 
@@ -195,7 +254,7 @@ echo 'Es sind ' . number_format($sizeaddMB, 2, ',', '.') . ' MB ' . 'von ' . $_S
 
 <!--
     ZUSATZFUNKTIONEN?
-    - Papierkorb
-    - Bilderanzeige
+    - Papierkorb -> funktioniert
+    - Bilderanzeige??
 
 -->
