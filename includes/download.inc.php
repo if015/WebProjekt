@@ -2,7 +2,8 @@
 
 session_start();
 
-if ($_GET['dir'] == 'uploads/' . $_SESSION['dir'] . '/') {
+$dir = "../uploads/" . $_SESSION['dir'] . "/";
+
 
 if (isset($_GET['file']) && basename($_GET['file']) == $_GET['file']) {
     $filename = $_GET['file'];
@@ -16,9 +17,13 @@ if (!$filename) {
     //File nicht vorhanden.
 }
 
+if (!isset($_SESSION['id'])) {
+    echo "Du bist nicht zum Dateidownload berechtigt!";
+}
+
 else {
 
-    $path = "../" . $_GET['dir'] . $filename;
+    $path = $dir . $filename;
     $mime = mime_content_type($path);
     $fsize = filesize($path);
 
@@ -39,9 +44,4 @@ else {
             //Error
         }
     }
-}
-}
-else {
-    //Keine Berechtigung zum Download
-    echo "Keine Berechtigung!";
 }
