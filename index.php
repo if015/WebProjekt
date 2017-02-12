@@ -22,7 +22,7 @@ if (isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a id="unicornbox" class="navbar-brand" href="#">
 
                     <!-- LOGO LOGO LOGO LOGO LOGO -->
 
@@ -48,7 +48,33 @@ if (isset($_SESSION['id'])) {
 </header>
 
 <section>
+
+    <div class="container">
+        <?php
+        if (!empty($_GET['error']) && $_GET['error'] == "wrongpwd") {
+        $errormsg = "Das Passwort ist nicht korrekt";
+        ?>
+        <div class='alert alert-danger alert-dismissible' role='alert'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+            <?php echo $errormsg; } ?>
+        </div>
+    </div>
+
+
 <div class="container">
+   <div class="row">
+       <div class="col-md-4">
+
+           <!-- Hier Bild rein -->
+
+
+
+       </div>
+
+
+    <div class="col-md-8">
 
     <div id="signup" class="panel panel-primary">
         <div class="panel-heading">
@@ -73,7 +99,7 @@ if (isset($_SESSION['id'])) {
                 $errormsg = "Die angegegebenene E-Mail-Adresse wurde bereits registriert. Bitte eine andere Adresse angeben.";
             }
 
-                if (isset($errormsg)) {
+                if (isset($errormsg) && $_GET['error'] != "wrongpwd") {
                     ?>
 
                     <div class='alert alert-danger alert-dismissible' role='alert'>
@@ -133,11 +159,18 @@ if (isset($_SESSION['id'])) {
             </form>
         </div>
     </div>
+    </div>
+   </div>
 
 
 </div>
 </section>
 
+<footer class="container-fluid text-center">
+    <a href="#unicornbox" title="To Top">
+        <span class="fa fa-arrow-up"></span>
+    </a>
+</footer>
 
 
 

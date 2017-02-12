@@ -111,3 +111,21 @@ function showMime($path) {
     }
 }
 
+function clearChar($string) {
+    $string = strtolower($string);
+    $bla = array("\"", "'", "*", "$", "+", "(", ")", "\\", "/", "?", "!", ":", ";", ",", "__", "<", ">");
+    $string = str_replace($bla, "_", $string);
+    $string = str_replace ("ß", "ss", $string);
+    $string = str_replace ("ä", "ae", $string);
+    $string = str_replace ("ä", "ae", $string);
+    $string = str_replace ("ö", "oe", $string);
+    $string = str_replace ("ö", "oe", $string);
+    $string = str_replace ("ü", "ue", $string);
+    $string = str_replace ("ü", "ue", $string);
+    $string = str_replace ("Ä", "ae", $string);
+    $string = str_replace ("Ö", "oe", $string);
+    $string = str_replace ("Ü", "ue", $string);
+    //$string = htmlentities ($string);
+    //$string = filter_var($string, FILTER_SANITIZE_URL);
+    return ($string);
+}

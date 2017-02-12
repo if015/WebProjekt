@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * TODO (12/02/17):
+ * - Fehler beim Anlegen der der Ordner zurückgeben.
+ *
+ */
+
 session_start();
 include 'dbh.inc.php';
 
@@ -61,8 +68,9 @@ else {
         header('Location: ../index.php?success=true');
         exit;
     } else {
-        header('Location: ../index.php?error=')
+        header('Location: ../index.php?error=');
         //Fehler beim Anlegen!!!
         exit;
     }
 }
+

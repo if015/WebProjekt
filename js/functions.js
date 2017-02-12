@@ -46,9 +46,7 @@ $(document).ready(function () {
     });
 });
 
-
 //Dateien umbennen - funktioniert
-
 
 $(function() {
     $.fn.editable.defaults.mode = 'inline';

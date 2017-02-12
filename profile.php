@@ -38,7 +38,7 @@ if (!isset($_SESSION['id'])) {
                 <ul class="nav navbar-nav">
                     <li><a href="files.php">Dateien</a></li>
                     <li><a href="trash.php">Papierkorb</a></li>
-                    <li class="active"><a href="#">Profil</a></li>
+                    <li class="active"><a href="profile.php">Profil</a></li>
                 </ul>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-primary">
@@ -50,14 +50,20 @@ if (!isset($_SESSION['id'])) {
     </nav>
 </header>
 
-<!-- aus Registrierung   -->
+
 
 <section>
     <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img class="img-rounded img-responsive center-block" src="<?php echo "avatar/".$_SESSION['dir']; ?>">
+                <h4 class="text-uppercase text-center"><?php echo $_SESSION['first']?></h4>
+            </div>
 
-        <div id="signup" class="panel panel-primary">
+<div class="col-md-10">
+        <div id="changePwd" class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Profil ändern</h3>
+                <h3 class="panel-title">Dein Passwort ändern</h3>
             </div>
             <div class="panel-body">
 
@@ -70,6 +76,9 @@ if (!isset($_SESSION['id'])) {
                 }
                 if (!empty($_GET['error']) && $_GET['error'] == "password2") {
                     $errormsg = "Die eingegebene Passwörter stimmen nicht überein!";
+                }
+                if (!empty($_GET['error']) && $_GET['error'] == "pwdwrong") {
+                    $errormsg = "Dein altes Passwort ist nicht korrekt. Die Änderung konnte nicht übernommen werden";
                 }
 
                 if (isset($errormsg)) {
@@ -86,7 +95,7 @@ if (!isset($_SESSION['id'])) {
                 }
 
                 if (!empty($_GET['success'])) {
-                    $successmsg = "Deine Änderungen wurden erfolgreich übernommen!";
+                    $successmsg = "Dein Passwort wurde erfolgreich geändert!";
                     ?>
 
                     <div class='alert alert-success alert-dismissible' role='alert'>
@@ -102,12 +111,12 @@ if (!isset($_SESSION['id'])) {
                     <div class="form-group">
                         <label for="pwd" class="col-sm-2 control-label">Neues Passwort</label>
                         <div class="col-sm-10">
-                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Passwort">
-                            <input type="password" name="pwd2" class="form-control" placeholder="Passwort wiederholen">
+                            <input type="password" name="pwd" class="form-control" id="pwd" placeholder="Neues Passwort">
+                            <input type="password" name="pwd2" class="form-control" placeholder="Neues Passwort wiederholen">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="pwdold" class="col-sm-2 control-label">Altes Passwort eingeben</label>
+                        <label for="pwdold" class="col-sm-2 control-label">Passwort</label>
                         <div class="col-sm-10">
                             <input type="password" name="pwdold" class="form-control" id="pwdold" placeholder="Altes Passwort">
                         </div>
@@ -122,13 +131,22 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
 
+        <div id="avatar" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Profilbild hochladen oder ändern</h3>
+            </div>
+            <div class="panel-body">
+                <!-- Avatar Upload über dropzone, noch nicht erstellt -->
+                <form action="includes/avatar.inc.php"
+                      class="dropzone"
+                      id="avatarDropzone">
+                </form>
+            </div>
+        </div>
 
+        </div>
     </div>
-    <form action="includes/avatar.inc.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        </input>
-        <button type="submit">Hochladen</button>
-    </form>
+    </div>
 
 </section>
 

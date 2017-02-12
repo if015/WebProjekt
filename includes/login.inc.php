@@ -1,4 +1,12 @@
 <?php
+/**
+ * TODO (12/02/17):
+ * - SQL-Injection verhindern.
+ * - Fehler übergeben bei falschem Passwort.
+ * - SESSION-Variablen überprüfen.
+ * - Passwort nicht mehr in SESSION speichern
+ */
+
 session_start();
 include 'dbh.inc.php';
 
@@ -12,15 +20,18 @@ $user = $statement->fetch();
 
 if ($user != false && password_verify($pwd, $user['pwd'])) {
     $_SESSION['id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
     $_SESSION['first'] = $user['first'];
     $_SESSION['dir'] = $user['dir'];
     $_SESSION['size'] = $user['size'];
-    $_SESSION['pwd'] = $user['pwd'];
-    header('Location: ../files.php');
+    //$_SESSION['pwd'] = $user['pwd']; //über SQL auslesen!
+    header('location: ../files.php');
 
 }
 
 else {
-    echo "Fehler";
+    header('location: ../index.php?error=wrongpwd');
+    //echo "Fehler";
     //über GET auf index.php anzeigen!
 }
+

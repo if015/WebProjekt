@@ -10,7 +10,11 @@ include 'dbh.inc.php';
 $pwd = $_POST['pwd'];
 $pwd2 = $_POST['pwd2'];
 $pwdold = $_POST['pwdold'];
-$id = $_SESSION['id'];
+
+$statement = $conn->prepare("SELECT * FROM users WHERE id = :id");
+$result = $statement->execute(array('id' => $_SESSION['id']));
+$user = $statement->fetch();
+
 // Passwort zu kurz
 if (strlen($pwd) < 5) {
     header('Location: ../profile.php?error=password1');
@@ -21,17 +25,20 @@ if ($pwd != $pwd2) {
     header('Location: ../profile.php?error=password2');
     exit();
 }
-else if (password_verify($pwdold, $_SESSION['pwd']))
+
+
+
+else if ($user != false && password_verify($pwdold, $user['pwd']))
 {
     $pwdEnc = password_hash($pwd, PASSWORD_DEFAULT);
 
     if (isset($pwd)) {
-        $statement = $conn->prepare("UPDATE users SET pwd = :pwd WHERE id") ;
+        $statement = $conn->prepare("UPDATE users SET pwd = :pwd WHERE id = :id") ;
     }
 
-    $result = $statement->execute(array('pwd' => $pwdEnc));
+    $result = $statement->execute(array('pwd' => $pwdEnc, 'id' => $_SESSION['id']));
     if ($result) {
-        //echo "Registrierung abgeschlossen";
+        //echo "Passwort geändert";
         header('Location: ../profile.php?success=true');
     } else {
         echo 'Fehler: Beim Abspeichern';
@@ -40,5 +47,5 @@ else if (password_verify($pwdold, $_SESSION['pwd']))
 }
 else
 {
-    header('Location: ../profile.php?error=Pizzalovers');
+    header('Location: ../profile.php?error=pwdwrong');
 }

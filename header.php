@@ -14,16 +14,14 @@ echo "
     <link rel='stylesheet' type='text/css' href='css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' href='css/font-awesome.css'>
     <link rel='stylesheet' type='text/css' href='css/bootstrap-editable.css'>
-    <link rel='stylesheet' type='text/css' href='css/style.css'>
     <link rel='stylesheet' type='text/css' href='css/basic.css'>
-    <link rel='stylesheet' type='text/css' href='css/fileinput.css'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
       
     <script src='js/jquery-3.1.1.js'></script>
     <script src='js/bootstrap.js'></script>
     <script src='js/bootstrap-editable.min.js'></script>
     <script src='js/dropzone.js'></script>
     <script src='js/dropzone-settings.js'></script>
-    <script src='js/fileinput.js'></script>
     <script src='js/functions.js'></script>
     
     

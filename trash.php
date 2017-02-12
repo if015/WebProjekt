@@ -39,8 +39,8 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="files.php">Dateien</a></li>
-                    <li class="active"><a href="#">Papierkorb</a></li>
-                    <li><a href="profile_copy.php">Profil</a></li>
+                    <li class="active"><a href="trash.php">Papierkorb</a></li>
+                    <li><a href="profile.php">Profil</a></li>
                 </ul>
                 <form action="includes/logout.inc.php" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-primary">
@@ -54,6 +54,23 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 
 <section>
     <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+
+                <img class="img-rounded img-responsive center-block" src="<?php echo "avatar/".$_SESSION['dir']; ?>">
+                <h4 class="text-uppercase text-center"><?php echo $_SESSION['first']?></h4>
+                <form action="includes/unlinkall.inc.php">
+                    <button type="submit" class="btn btn-primary btn-lg center-block">
+                        <span class="fa fa-minus "> entleeren</span>
+                    </button>
+                </form>
+
+
+
+            </div>
+
+            <div class="col-md-10">
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Meine gelöschten Dateien</h3>
@@ -102,28 +119,22 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                         <tr>
                             <td><?php showMime($path)?></td>
                             <td class="filename">
-                                <a id="name"
-                                   class="publicname-change"
-                                   data-name="<?php echo $file; ?>"
-                                   data-pk="<?php echo $file; ?>"
-                                   data-type="text"
-                                   href="includes/download.inc.php?file=<?php echo $file ?>&dir=<?php echo $dir ?>">
-                                    <span><?php echo $file; ?></span>
-                                </a>
-
+                                <span><?php echo $file; ?></span>
                             </td>
                             <td><?php echo $size; ?></td>
                             <td><?php echo date("d.m.Y H:i", $cdate); ?></td>
                             <td>
+
                                 <button class="btn btn-link">
-                            <span id="<?php echo $fileinfo['basename']; ?>"
-                                  class="undo fa fa-undo">
-                            </span>
+                                    <span id="<?php echo $file; ?>"
+                                          class="undo fa fa-undo">
+                                    </span>
                                 </button>
+
                                 <button class="btn btn-link">
-                            <span id="<?php echo $path; ?>"
-                                  class="unlink fa fa-trash">
-                            </span>
+                                    <span id="<?php echo $fileinfo['basename']; ?>"
+                                          class="unlink fa fa-trash">
+                                    </span>
                                 </button>
                             </td>
                         </tr>
@@ -131,24 +142,17 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                         <!-- Dateien werden nach sieben Tagen automatisch gelöscht -->
 
                         <?php
-                        if (time() < ($cdate + (7*24*60*60))) {
-                            unlink($path);
-                        }
+                        //if (time() < ($cdate + (7*24*60*60))) {
+                        //    unlink($path);
+                        //}
                     }
                 }
                 ?>
                 </tbody>
             </table>
             </div>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <!-- Papierkorb leeren  -->
-        <form action="includes/unlinkall.inc.php">
-            <button type="submit" class="btn btn-primary">
-                <span class="fa fa-trash"> Papierkorb leeren</span>
-            </button>
-        </form>
     </div>
 </section>
 

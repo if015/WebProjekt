@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * TODO (12/02/17):
+ * - Überprüfung ob Download durch den Nutzer.
+ * - Fehlerseite: Nicht zum Download berechtigt
+ */
+
 session_start();
 
 $dir = "../uploads/" . $_SESSION['dir'] . "/";
@@ -45,3 +51,5 @@ else {
         }
     }
 }
+
+

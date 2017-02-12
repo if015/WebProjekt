@@ -28,3 +28,8 @@
     border-color: #8041FF;
     border-width: 2px;
 }
+
+.img-rounded {
+    max-width: 160px;
+    max-height: 160px;
+}
