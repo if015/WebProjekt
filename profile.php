@@ -166,5 +166,6 @@ if (!isset($_SESSION['id'])) {
     <a href="#">Kontakt</a>
 </footer>
 
+<?php
 
 ?>
