@@ -11,7 +11,7 @@
 }
 
 .grad {
-    background: #DB0CE8;
+    background: #FFFFFF;
     background: -webkit-linear-gradient(-45deg, #DB0CE8, #8041FF);
     background: -o-linear-gradient(-45deg, #DB0CE8, #8041FF);
     background: -moz-linear-gradient(-45deg, #DB0CE8, #8041FF);
@@ -25,11 +25,74 @@
     -moz-border-radius: 30px 30px 30px 30px;
     border-radius: 30px 30px 30px 30px;
     border-style: dashed;
-    border-color: #8041FF;
+    border-color: #377bb5;
     border-width: 2px;
 }
 
 .img-rounded {
     max-width: 160px;
     max-height: 160px;
+}
+
+.navbar-brand {
+    height: 70px;
+    width:70px;
+    position: absolute;
+    margin: -10px;
+}
+
+.Logounibox {
+    height: 500px;
+    width: 500px;
+    text-align: left;
+    float: left;
+    margin-top: -150px;
+    margin-left: 5 px;
+    margin-right:50px;
+}
+#bs-example-navbar-collapse-1 {
+    margin-left:40px;
+}
+
+#signup {
+    float: right;
+}
+
+#hauptklasse {
+    
+}
+.panel-title {
+
+}
+
+
+#bs-example-navbar-collapse-1 {
+    width: 
+}
+
+.container-fluid { 
+
+    
+}
+
+.hintergrund
+    {
+        background-color:lightgrey;
+}
+
+#hintergrundfarbe
+{
+    background-color: whitesmoke;
+}
+
+.jumbocolor
+{
+    color: #377bb5;
+    text-align: center;
+}
+#footer
+{
+    background-color: lightgrey;
+    position: absolute;
+
 }
