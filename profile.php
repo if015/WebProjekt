@@ -18,10 +18,10 @@ if (!isset($_SESSION['id'])) {
 
 ?>
 
-    <body>
+    <body  id="hintergrundfarbe">
 <!-- Menüleiste = Stylen -->
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default hintergrund">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,8 +30,14 @@ if (!isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <span class="fa fa-bomb"></span>
+                <a id="unicornbox" class="navbar-brand" href="index.php">
+
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
+                    <img src="einhorn.svg"  />
+
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -149,7 +155,22 @@ if (!isset($_SESSION['id'])) {
     </div>
 
 </section>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<footer id="footer" class="container-fluid text-center">
+    <a href="#unicornbox" title="To Top">
+        <span class="fa fa-arrow-up"></span></a>
+    <div class="container">
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </div>
+</footer>
 
 <?php
 
