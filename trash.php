@@ -20,10 +20,10 @@ if (!isset($_SESSION['id'])) {
 $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 ?>
 
-<body>
+<body  id="hintergrundfarbe">
 
 <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default hintergrund">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -32,8 +32,14 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <span class="fa fa-bomb"></span>
+                <a id="unicornbox" class="navbar-brand" href="index.php">
+
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
+                    <img src="einhorn.svg"  />
+
+                    <!-- LOGO LOGO LOGO LOGO LOGO -->
+
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -155,15 +161,21 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
         </div>
     </div>
 </section>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-
-
-
-
-<footer>
-    <!-- Footer einfügen
-         z.B. Links: FAQ, Impressum, Hilfe-->
+<footer id="footer" class="container-fluid text-center">
+    <a href="#unicornbox" title="To Top">
+        <span class="fa fa-arrow-up"></span></a>
+    <div class="container">
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </div>
 </footer>
 </body>
 
-</html>
