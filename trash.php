@@ -23,7 +23,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 <body  id="hintergrundfarbe">
 
 <header>
-    <nav class="navbar navbar-default hintergrund">
+    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -161,21 +161,16 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
         </div>
     </div>
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<footer id="footer" class="container-fluid text-center">
+<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
     <a href="#unicornbox" title="To Top">
         <span class="fa fa-arrow-up"></span></a>
-    <div class="container">
-        <a href="#">Hilfe</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">Impressum</a>
-        <a href="#">Kontakt</a>
-    </div>
+    <a href="#">Hilfe</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Impressum</a>
+    <a href="#">Kontakt</a>
 </footer>
+
 </body>
 
+</html>
