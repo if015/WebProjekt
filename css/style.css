@@ -58,31 +58,20 @@
     float: right;
 }
 
-#hauptklasse {
-    
+
+.container{
+    padding-top: 70px;
 }
-.panel-title {
-
-}
-
-
-#bs-example-navbar-collapse-1 {
-    width: 
-}
-
-.container-fluid { 
-
-    
-}
-
 .hintergrund
     {
         background-color:lightgrey;
+
 }
 
 #hintergrundfarbe
 {
     background-color: whitesmoke;
+
 }
 
 .jumbocolor
@@ -93,6 +82,5 @@
 #footer
 {
     background-color: lightgrey;
-    position: absolute;
 
 }
