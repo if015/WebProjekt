@@ -19,10 +19,11 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 ?>
 
-<body  id="hintergrundfarbe">
+<body id="hintergrundfarbe">
 
 <header>
-    <nav class="navbar navbar-default hintergrund">
+    <!-- Oben positionierte Navigationsleiste -->
+    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -304,7 +305,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 
 
-<footer id="footer" class="container-fluid text-center">
+<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
     <a href="#unicornbox" title="To Top">
         <span class="fa fa-arrow-up"></span></a>
     <a href="#">Hilfe</a>
@@ -312,7 +313,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
     <a href="#">Impressum</a>
     <a href="#">Kontakt</a>
 </footer>
-    
+
 </body>
 
 </html>
