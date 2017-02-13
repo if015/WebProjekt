@@ -172,7 +172,7 @@ if (isset($_SESSION['id'])) {
 </div>
 </section>
 
-<footer id="footer" class="container-fluid text-center">
+<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
     <a href="#unicornbox" title="To Top">
         <span class="fa fa-arrow-up"></span></a>
     <a href="#">Hilfe</a>
@@ -182,3 +182,4 @@ if (isset($_SESSION['id'])) {
 </footer>
 
 </body>
+</html>
