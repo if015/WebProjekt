@@ -127,13 +127,11 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                                    href="
 
                                    <?php
-                                   if (in_array(mime_content_type($path), $imgMime)) {
-                                       echo $path."\" data-toggle=\"modal\" data-target=\"#imageModal\">";
-
-
-                                   } else {
+                                   //if (in_array(mime_content_type($path), $imgMime)) {
+                                   //    echo $path."\" data-toggle=\"modal\" data-target=\"#imageModal\">";
+                                   //} else {
                                        echo "includes/download.inc.php?file=".$file."\"";
-                                   }
+                                   //}
                                    ?>
 
                                     <span><?php echo $file; ?></span>
@@ -250,9 +248,9 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                         <input id="file" name="file" type="hidden" value="">
 
                         <div class="form-group">
-                            <label for="target" class="col-sm-2 control-label">an E-Mail senden</label>
+                            <label for="recipient" class="col-sm-2 control-label">an E-Mail senden</label>
                             <div class="col-sm-10">
-                                <input type="text" name="recipient" class="form-control" placeholder="E-Mail-Adresse">
+                                <input id="recipient" type="text" name="recipient" class="form-control" placeholder="E-Mail-Adresse">
                             </div>
                         </div>
 
@@ -260,36 +258,10 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                             <div class="col-sm-offset-2 col-sm-10 text-right">
                                 <button type="submit" class="btn btn-primary">
                                     <span class="fa fa-send">Datei über E-Mail teilen</span>
-
                                 </button>
                             </div>
                         </div>
                     </form>
-
-                    <!--form id="shareForm" action="includes/mail.inc.php" method="post">
-                        <input type="text" name="file" value="<?php //echo $file?>" />
-
-
-
-
-
-                        <div class="form-group">
-                            <label for="target" class="col-sm-2 control-label">an E-Mail senden</label>
-                            <div class="col-sm-10">
-                                <input id="emailshare" type="text" name="target" class="form-control" id="target" placeholder="E-Mail-Adresse">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10 text-right">
-                                <button type="submit" class="btn btn-primary">
-                                    <span class="fa fa-send">Datei über E-Mail teilen</span>
-
-                                </button>
-                            </div>
-                        </div>
-
-                    </form-->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
