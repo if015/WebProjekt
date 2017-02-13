@@ -307,13 +307,12 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 <footer id="footer" class="container-fluid text-center">
     <a href="#unicornbox" title="To Top">
         <span class="fa fa-arrow-up"></span></a>
-    <div class="container">
     <a href="#">Hilfe</a>
     <a href="#">Datenschutz</a>
     <a href="#">Impressum</a>
     <a href="#">Kontakt</a>
-    </div>
 </footer>
+    
 </body>
 
 </html>
