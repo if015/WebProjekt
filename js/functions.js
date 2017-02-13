@@ -71,3 +71,19 @@ $(function() {
         $("#userfiles").load("files.php #userfiles");
     });
 });
+
+//$(document).ready(function(){
+//    $(".share").click(function(){
+//        $("#file").val($(this).data('id'));
+//        $('#shareForm').modal('show');
+//    });
+//});
+$(document).ready(function() {
+    $('#shareModal').on('show.bs.modal', function (e) {
+
+        var $modal = $(this),
+            file = e.relatedTarget.id;
+        $("input#file").val(file)
+
+    });
+});

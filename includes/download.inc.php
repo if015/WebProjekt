@@ -7,8 +7,12 @@
  */
 
 session_start();
+if (isset($_GET['dir'])) {
+    $dir = "../uploads/" . $_GET['dir'] . "/";
+} else {
+    $dir = "../uploads/" . $_SESSION['dir'] . "/";
+}
 
-$dir = "../uploads/" . $_SESSION['dir'] . "/";
 
 
 if (isset($_GET['file']) && basename($_GET['file']) == $_GET['file']) {
@@ -23,9 +27,9 @@ if (!$filename) {
     //File nicht vorhanden.
 }
 
-if (!isset($_SESSION['id'])) {
-    echo "Du bist nicht zum Dateidownload berechtigt!";
-}
+//if (!isset($_SESSION['id'])) {
+//    echo "Du bist nicht zum Dateidownload berechtigt!";
+//}
 
 else {
 

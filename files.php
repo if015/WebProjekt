@@ -162,7 +162,8 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                                 </form>
                                 -->
 
-                                <button id="<?php echo $path; ?>" class="share btn btn-link" data-toggle="modal" data-target="#shareModal">
+                                <button id="<?php echo $path; ?>" class="share btn btn-link" data-toggle="modal"
+                                        data-target="#shareModal" id="<?php echo $file?>">
                                     <span class="fa fa-share"></span>
                                 </button>
 
@@ -237,7 +238,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
     <!-- Dateilink über E-Mail versenden -->
 
-    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="Upload">
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="Datei teilen...">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -245,9 +246,32 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                     <h4 class="modal-title" id="myModalLabel">Upload</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="shareForm" action="includes/mail.inc.php" method="post">
+                    <form action="includes/mail.inc.php" method="post">
+                        <input id="file" name="file" type="hidden" value="">
 
-                        <?php echo $file?>
+                        <div class="form-group">
+                            <label for="target" class="col-sm-2 control-label">an E-Mail senden</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="recipient" class="form-control" placeholder="E-Mail-Adresse">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 text-right">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="fa fa-send">Datei über E-Mail teilen</span>
+
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!--form id="shareForm" action="includes/mail.inc.php" method="post">
+                        <input type="text" name="file" value="<?php //echo $file?>" />
+
+
+
+
 
                         <div class="form-group">
                             <label for="target" class="col-sm-2 control-label">an E-Mail senden</label>
@@ -265,7 +289,7 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                             </div>
                         </div>
 
-                    </form>
+                    </form-->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
