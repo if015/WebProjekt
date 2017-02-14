@@ -10,10 +10,10 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
-<body id="hintergrundfarbe">
+<body>
 
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -22,17 +22,16 @@ if (isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="unicornbox" class="navbar-brand" href="index.php">
+                <a id="unicornbox" class="navbar-brand" href="files.php">
 
                     <!-- LOGO LOGO LOGO LOGO LOGO -->
 
-                    <img src="einhorn.svg"  />
+                    <span class="icon-logo_svg logo"></span>
 
                     <!-- LOGO LOGO LOGO LOGO LOGO -->
 
                 </a>
             </div>
- 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <!-- Anmeldeformular -->
                 <form action="includes/login.inc.php" class="navbar-form navbar-right" method="post">
@@ -46,7 +45,6 @@ if (isset($_SESSION['id'])) {
             </div>
         </div>
     </nav>
-  
 </header>
 
 <section>
@@ -64,23 +62,22 @@ if (isset($_SESSION['id'])) {
         </div>
     </div>
 
-    <img src ="Logounibox.png" class = "Logounibox"/>
+
 <div class="container">
    <div class="row">
-       <div class="col-md-4">
+       <div class="col-md-5">
 
            <!-- Hier Bild rein -->
-
-
+            <img class="img-responsive" src="img/logo.png">
 
        </div>
 
 
-    <div class="col-md-8">
+    <div class="col-md-7">
 
-    <div id="signup" class="panel panel-primary">
-        <div class="panel-heading" id="hauptklasse">
-            <h3 class="panel-title ">Registrieren</h3>
+    <div id="signup" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Registrieren</h3>
         </div>
         <div class="panel-body">
 
@@ -155,7 +152,7 @@ if (isset($_SESSION['id'])) {
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10 text-right">
-                        <button type="submit" class="btn btn-primary" id="registrierenbutton">Registrieren</button>
+                        <button type="submit" class="btn btn-primary">Registrieren</button>
                     </div>
                 </div>
             </form>
@@ -163,23 +160,31 @@ if (isset($_SESSION['id'])) {
     </div>
     </div>
    </div>
+
+
+</div>
+    <div class="container">
     <div class="jumbotron jumbocolor">
         <h3>SHARE EVERY COLOR OF YOUR LIFE!</h3>
         <p>Dateien immer und überall zugänglich. Einfach mit Freunden teilen und loslegen!</p>
     </div>
-
-
-</div>
+    </div>
 </section>
 
-<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
+
+<footer class="container-fluid text-center">
     <a href="#unicornbox" title="To Top">
-        <span class="fa fa-arrow-up"></span></a>
+        <span class="fa fa-arrow-up"></span>
+    </a>
+    <p>
     <a href="#">Hilfe</a>
     <a href="#">Datenschutz</a>
     <a href="#">Impressum</a>
     <a href="#">Kontakt</a>
+    </p>
 </footer>
+
+
 
 </body>
 </html>

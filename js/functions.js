@@ -61,14 +61,16 @@ $(function() {
         $.ajax({
             type: "POST",
             url: "includes/rename.inc.php",
-            data: {value:value, pk:pkk},
+            data: {value:value, pk:pkk, method:'rename'},
             success: function () {
-                $("#userfiles").load("files.php #userfiles");
+                //$("#userfiles").load("files.php #userfiles");
+                location.reload();
             }
         });
     });
     $(document).on('click', '.editable-submit', function (e) {
-        $("#userfiles").load("files.php #userfiles");
+        //$("#userfiles").load("files.php #userfiles");
+        location.reload();
     });
 });
 

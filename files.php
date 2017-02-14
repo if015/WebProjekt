@@ -19,11 +19,10 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 ?>
 
-<body id="hintergrundfarbe">
+<body>
 
 <header>
-    <!-- Oben positionierte Navigationsleiste -->
-    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
+    <nav id="unicornbox" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -32,14 +31,8 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="unicornbox" class="navbar-brand" href="index.php">
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
-                    <img src="einhorn.svg"  />
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
+                <a class="navbar-brand" href="files.php">
+                    <span class="icon-logo_svg logo"></span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,10 +56,16 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
         <div class="row">
             <div class="col-md-2">
 
-                <img class="img-rounded img-responsive center-block" src="<?php echo "avatar/".$_SESSION['dir']; ?>">
+                <?php if (empty(glob("avatar/".$_SESSION['dir'].".*"))) { ?>
+                    <img class="img-rounded img-responsive center-block" src="avatar/default.png">
+                <?php } else { ?>
+                    <img class="img-rounded img-responsive center-block" src="<?php echo 'avatar/'.$_SESSION['dir']; ?>">
+                <?php } ?>
+
                 <h4 class="text-uppercase text-center"><?php echo $_SESSION['first']?></h4>
+
                 <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#uploadModal">
-                    <span class="fa fa-upload "> Upload</span>
+                    <span class="fa fa-upload"> Upload</span>
                 </button>
 
 
@@ -194,30 +193,6 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
         </div>
     </div>
 
-    <div class="container">
-        <h1></h1>
-    </div>
-
-
-
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="Preview">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Preview</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="<?php echo $path ?>">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- Fileupload in einem Modal -->
 
@@ -248,9 +223,9 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Upload</h4>
+                    <h4 class="modal-title" id="myModalLabel">Datei teilen</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body form-horizontal">
                     <form action="includes/mail.inc.php" method="post">
                         <input id="file" name="file" type="hidden" value="">
 
@@ -297,23 +272,17 @@ $dir ='uploads/' . $_SESSION['dir'] . '/';
 
 </section>
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-
-
-
-<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
+<footer class="container-fluid text-center">
     <a href="#unicornbox" title="To Top">
-        <span class="fa fa-arrow-up"></span></a>
-    <a href="#">Hilfe</a>
-    <a href="#">Datenschutz</a>
-    <a href="#">Impressum</a>
-    <a href="#">Kontakt</a>
+        <span class="fa fa-arrow-up"></span>
+    </a>
+    <p>
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </p>
 </footer>
-
 </body>
 
 </html>

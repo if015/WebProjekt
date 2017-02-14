@@ -20,10 +20,10 @@ if (!isset($_SESSION['id'])) {
 $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
 ?>
 
-<body  id="hintergrundfarbe">
+<body>
 
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
+    <nav id="unicornbox" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -32,14 +32,8 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="unicornbox" class="navbar-brand" href="index.php">
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
-                    <img src="einhorn.svg"  />
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
+                <a class="navbar-brand" href="files.php">
+                    <span class="icon-logo_svg logo"></span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -63,7 +57,12 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
         <div class="row">
             <div class="col-md-2">
 
-                <img class="img-rounded img-responsive center-block" src="<?php echo "avatar/".$_SESSION['dir']; ?>">
+                <?php if (empty(glob("avatar/".$_SESSION['dir'].".*"))) { ?>
+                    <img class="img-rounded img-responsive center-block" src="avatar/default.png">
+                <?php } else { ?>
+                    <img class="img-rounded img-responsive center-block" src="<?php echo 'avatar/'.$_SESSION['dir']; ?>">
+                <?php } ?>
+
                 <h4 class="text-uppercase text-center"><?php echo $_SESSION['first']?></h4>
                 <form action="includes/unlinkall.inc.php">
                     <button type="submit" class="btn btn-primary btn-lg center-block">
@@ -162,13 +161,16 @@ $dir ='uploads/' . $_SESSION['dir'] . '/trash/';
     </div>
 </section>
 
-<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
+<footer class="container-fluid text-center">
     <a href="#unicornbox" title="To Top">
-        <span class="fa fa-arrow-up"></span></a>
-    <a href="#">Hilfe</a>
-    <a href="#">Datenschutz</a>
-    <a href="#">Impressum</a>
-    <a href="#">Kontakt</a>
+        <span class="fa fa-arrow-up"></span>
+    </a>
+    <p>
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </p>
 </footer>
 
 </body>

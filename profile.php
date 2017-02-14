@@ -18,10 +18,10 @@ if (!isset($_SESSION['id'])) {
 
 ?>
 
-    <body  id="hintergrundfarbe">
+    <body>
 <!-- Menüleiste = Stylen -->
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top hintergrund">
+    <nav id="unicornbox" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -30,14 +30,8 @@ if (!isset($_SESSION['id'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="unicornbox" class="navbar-brand" href="index.php">
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
-                    <img src="einhorn.svg"  />
-
-                    <!-- LOGO LOGO LOGO LOGO LOGO -->
-
+                <a class="navbar-brand" href="files.php">
+                    <span class="icon-logo_svg logo"></span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -62,12 +56,18 @@ if (!isset($_SESSION['id'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img class="img-rounded img-responsive center-block" src="<?php echo "avatar/".$_SESSION['dir']; ?>">
+
+                <?php if (empty(glob("avatar/".$_SESSION['dir'].".*"))) { ?>
+                    <img class="img-rounded img-responsive center-block" src="avatar/default.png">
+                <?php } else { ?>
+                    <img class="img-rounded img-responsive center-block" src="<?php echo 'avatar/'.$_SESSION['dir']; ?>">
+                <?php } ?>
+
                 <h4 class="text-uppercase text-center"><?php echo $_SESSION['first']?></h4>
             </div>
 
 <div class="col-md-10">
-        <div id="changePwd" class="panel panel-primary">
+        <div id="changePwd" class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Dein Passwort ändern</h3>
             </div>
@@ -137,9 +137,20 @@ if (!isset($_SESSION['id'])) {
             </div>
         </div>
 
-        <div id="avatar" class="panel panel-primary">
+        <div id="avatar" class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Profilbild hochladen oder ändern</h3>
+                <h3 class="panel-title">
+                    Profilbild
+
+                    <?php if (empty(glob("avatar/".$_SESSION['dir'].".*"))) {
+                        echo "hochladen";
+                    } else {
+                        echo "ändern";
+                        echo " <a href='includes/delAvatar.inc.php'>(löschen)</a>";
+                    }
+                    ?>
+
+                </h3>
             </div>
             <div class="panel-body">
                 <!-- Avatar Upload über dropzone, noch nicht erstellt -->
@@ -156,16 +167,18 @@ if (!isset($_SESSION['id'])) {
 
 </section>
 
-
-<footer id="footer" class="container-fluid navbar-fixed-bottom text-center">
+<footer class="container-fluid text-center">
     <a href="#unicornbox" title="To Top">
-        <span class="fa fa-arrow-up"></span></a>
-    <a href="#">Hilfe</a>
-    <a href="#">Datenschutz</a>
-    <a href="#">Impressum</a>
-    <a href="#">Kontakt</a>
+        <span class="fa fa-arrow-up"></span>
+    </a>
+    <p>
+        <a href="#">Hilfe</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+    </p>
 </footer>
 
-<?php
+</body>
 
-?>
+</html>
